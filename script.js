@@ -8,14 +8,23 @@ function calcular(){
     let altura = window.document.getElementById('altura').value
     let imc = peso / (altura * altura)   
     let diagnostico = ''
-    if (String(peso).length == 0 || String(altura).length == 0){
+   
+
+
+    if (String(altura).length == 0 || String(peso).length == 0){
         alert('Preencha todos os campos!')
         return
-    }else if (String(altura).length != 4){
-        alert('Preencha o campo altura em METROS. Exemplo: 1.70')
+    }else if (String(altura).length > 4 || String(altura).length < 3){
+        alert('Preencha o campo altura corretamente!')
+        return
+    }else if (String(altura).indexOf('.',1) == -1 && String(altura).indexOf(',',1) == -1){
+        alert('Preencha o campo altura corretamente!')
+        return
+    }else if (String(altura).indexOf(',') != 1 && String(altura).indexOf('.') != 1 ){
+        alert('Preencha o campo altura corretamente!')
         return
     }
-
+ 
     if (imc < 18.5){
         diagnostico = 'Baixo peso'
     }else if ( imc > 18.5 && imc <= 24.9 ){
